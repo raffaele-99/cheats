@@ -1,0 +1,10 @@
+% docker
+
+# run a docker image in interactive mode  
+docker run --entrypoint "/bin/bash" -it <docker_image_name>
+
+# run a docker image in interactive mode and expose a port
+docker run --entrypoint "/bin/bash" -it -p <host_port>:<docker_port> <docker_image_name>
+
+# spawn a shell inside the most recently-created docker container
+docker exec -it $(docker ps -n 1 -q) /bin/bash

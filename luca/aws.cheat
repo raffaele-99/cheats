@@ -1,0 +1,4 @@
+% aws-cli
+
+# start using aws cli
+aws sts get-caller-identity --profile <profile>

@@ -1,0 +1,9 @@
+% python, fish
+
+# make venv in current directory and activate it
+python3 -m venv ./.venv && source ./.venv/bin/activate.fish
+
+% python
+
+# deactivate venv 
+deactivate

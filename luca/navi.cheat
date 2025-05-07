@@ -1,0 +1,6 @@
+% navi
+
+$ dotfiles_dir: echo "$LUCA_DOTFILES_DIR"
+
+# edit navi config
+nvim <dotfiles_dir>/navi/config.yaml

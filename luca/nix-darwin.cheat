@@ -1,0 +1,9 @@
+% nix-darwin
+;TODO: fix nix configs (can use https://github.com/rober-m/.dots as reference)
+;TODO: write cheats for custom fish functions
+
+# rebuild nix-darwin configuration
+darwin-rebuild switch --flake <flake_directory>\#<nix_config_name>
+
+# update flake
+nix flake update

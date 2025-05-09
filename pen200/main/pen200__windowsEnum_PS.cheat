@@ -9,6 +9,9 @@ Get-LocalGroup
 # list all members in a group
 Get-LocalGroupMember <groupname>
 
+# list all members in Administrators group
+Get-LocalGroupMember Administrators
+
 # list running processes
 Get-Process
 

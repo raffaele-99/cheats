@@ -1,0 +1,19 @@
+% fish-functions
+; cheats for https://github.com/raffaele-99/dotfiles/tree/main/fish/functions
+
+$ luca_content_dir: echo "$LUCA_CONTENT_DIR"
+
+% code-scan
+
+# run bearer in offline mode
+bearer-offline <scan_dir>
+
+# run semgrep in offline mode
+semgrep-offline <scan_dir>
+
+# update bearer rules
+get-bearer-rules <luca_content_dir>
+
+# update semgrep rules
+get-semgrep-rules <luca_content_dir>
+

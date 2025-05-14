@@ -3,6 +3,9 @@
 # list all users
 net user
 
+# list all groups
+net localgroup
+
 # list details of specific user
 net user <username>
 
@@ -38,3 +41,7 @@ wmic service get name,pathname | findstr /i /v """
 
 # list scheduled tasks
 schtasks /query /fo LIST /v
+
+# list all running tasks
+tasklist 
+

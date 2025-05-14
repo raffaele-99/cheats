@@ -5,3 +5,18 @@ sudo python3 -m http.server 80
 
 # start hosting http server at non-sudo port
 python3 -m http.server <port>
+
+# connect to windows machine via RDP (with username & password)
+xfreerdp /u:<username> /p:<password> /v:<host_address> /dynamic-resolution
+
+# connect to windows machine via RDP (with username & password) and mount current directory 
+xfreerdp /u:<username> /p:<password> /v:<host_address> /dynamic-resolution /drive:./,share
+
+# connect to windows machine via RDP (with username & password) and mount a directory 
+xfreerdp /u:<username> /p:<password> /v:<host_address> /dynamic-resolution /drive:<local_directory_name>,<remote_directory_name>
+
+# generate RSA keypair
+ssh-keygen -t rsa -b 4096 -f <key_name>
+
+# generate RSA keypair with passphrase
+ssh-keygen -t rsa -b 4096 -f <key_name> -N "<passphrase>"

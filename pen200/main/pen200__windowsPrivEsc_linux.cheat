@@ -4,11 +4,16 @@
 # connect to windows machine via WinRM (with username & password)
 evil-winrm -i <host_address> -u <username> -p <password>
 
-# connect to windows machine via RDP (with username & password)
-xfreerdp /u:<username> /p:<password> /v:<host_address> /dynamic-resolution
-
 # compile c code to 64-bit windows executable
 x86_64-w64-mingw32-gcc <input_c_filename> -o <output_exe_filename>
 
 # compile c++ code to windows dll
 x86_64-w64-mingw32-gcc <input_cpp_filename> --shared -o <output_dll_filename>
+
+# start hosting mimikatz at port 80
+cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
+sudo python3 -m http.server 80
+
+# start hosting mimikatz at non-sudo port
+cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
+python3 -m http.server <port>

@@ -6,3 +6,6 @@ Get-UnquotedService
 # create malicious exe at unquoted service path
 Write-ServiceBinary -ServiceName <service_name> -Path <vulnerable_path>
 Restart-Service <service_name>
+
+# list all modifiable service files
+Get-ModifiableServiceFile

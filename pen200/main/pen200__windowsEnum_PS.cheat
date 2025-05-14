@@ -3,8 +3,14 @@
 # list all users
 Get-LocalUser
 
-# list all groups 
+# list all groups
 Get-LocalGroup
+
+# list all users - requires GUI or admin privs
+Get-CimInstance -ClassName Win32_UserAccount -Filter "LocalAccount = TRUE" | Select-Object -Expand Caption
+
+# list all groups - requires GUI or admin privs
+Get-CimInstance -ClassName Win32_Group -Filter "LocalAccount = TRUE" | Select-Object -Expand Caption
 
 # list all members in a group
 Get-LocalGroupMember <groupname>
@@ -41,17 +47,17 @@ Get-History
 # get command history for pwsh via PSReadline
 (Get-PSReadlineOption).HistorySavePath
 
-# list installed windows services - requires GUI or admin privs
+# list running services - requires GUI or admin privs
 Get-CimInstance -ClassName win32_Service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}
+
+# list running services (excluding those in system32) - requires GUI or admin privs
+Get-CimInstance -ClassName win32_Service | Select Name,State,PathName | Where-Object {$_.State -like 'Running' -and $_.PathName -notlike 'C:\Windows\System32\*' -and $_.PathName -notlike 'C:\Windows\system32\*'}
+
+# check startup type of running service - requires GUI or admin privs
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like '<service-name>'}
 
 # check permissions for a file or directory
 Get-Acl -Path <file-or-directory-path>
-
-# check startup type of service
-Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like '<service-name>'}
-
-# list services the current user can modify
-Get-ModifiableServiceFile
 
 # list scheduled tasks (excluding tasks authored by Microsoft)
 Get-ScheduledTask | 
@@ -66,3 +72,6 @@ Select-Object TaskName, Author, @{ n = 'UserId'; e = { $_.Principal.UserId }}
 
 # list scheduled tasks
 Get-ScheduledTask | Select-Object Author,@{Name='TaskPath';Expression={$_.TaskPath}},TaskName | Format-Table -AutoSize
+
+# list installed security patches
+Get-CimInstance -Class win32_quickfixengineering | Where-Object { $_.Description -eq "Security Update" }

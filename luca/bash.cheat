@@ -1,0 +1,4 @@
+% bash
+
+# append string to all filenames in current directory
+for f in *; do mv "$f" "$f"<APPEND_STRING>; done
